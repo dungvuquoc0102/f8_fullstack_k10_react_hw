@@ -5,21 +5,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
-	const [darkMode, setDarkMode] = useState(false);
+	let darkMode = localStorage.getItem("darkMode");
+	console.log(darkMode, typeof darkMode);
+	if (darkMode === null) {
+		localStorage.setItem("darkMode", 0);
+		darkMode = 0;
+	} else {
+		darkMode = Number(darkMode);
+	}
+
+	const [isDarkMode, setIsDarkMode] = useState(darkMode);
+	darkMode ? document.body.parentNode.classList.add("dark") : document.body.parentNode.classList.remove("dark");
 
 	function toggleDarkMode() {
-		setDarkMode(!darkMode);
-		document.body.parentNode.classList.toggle("dark");
+		setIsDarkMode((prev) => (prev + 1) % 2);
+		let blockDarkMode = localStorage.getItem("darkMode");
+		blockDarkMode = Number(blockDarkMode);
+		blockDarkMode = (blockDarkMode + 1) % 2;
+		localStorage.setItem("darkMode", blockDarkMode);
+		blockDarkMode ? document.body.parentNode.classList.add("dark") : document.body.parentNode.classList.remove("dark");
 	}
 
 	return (
-		<header className="border-b-[1px] border-gray-300">
+		<header className="border-b-[1px] border-gray-300 dark:text-white px-3 xl:px-0">
 			{/* wrapper */}
 			<div className="container mx-auto	py-5 flex justify-between items-center">
 				{/* logo */}
 				<div>
 					<a href="#!">
-						<img className="w-[73px]" src="https://canifa.com/assets/images/logo.svg" alt="logo" />
+						<img className="w-[73px] bg-white" src="https://canifa.com/assets/images/logo.svg" alt="logo" />
 					</a>
 				</div>
 				{/* menu */}
@@ -57,7 +71,7 @@ function Header() {
 					</div>
 					{/* dark mode */}
 					<div>
-						<button onClick={toggleDarkMode}>{darkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
+						<button onClick={toggleDarkMode}>{isDarkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
 					</div>
 				</div>
 			</div>
