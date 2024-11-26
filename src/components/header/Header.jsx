@@ -6,7 +6,6 @@ import { faMagnifyingGlass, faMoon, faSun } from "@fortawesome/free-solid-svg-ic
 
 function Header() {
 	let darkMode = localStorage.getItem("darkMode");
-	console.log(darkMode, typeof darkMode);
 	if (darkMode === null) {
 		localStorage.setItem("darkMode", 0);
 		darkMode = 0;
@@ -32,7 +31,7 @@ function Header() {
 			<div className="container mx-auto	py-5 flex justify-between items-center">
 				{/* logo */}
 				<div>
-					<a href="#!" className="font-bold text-2xl">
+					<a href="/" className="font-bold text-2xl">
 						DummyJSON
 					</a>
 				</div>
@@ -63,7 +62,7 @@ function Header() {
 				{/* function */}
 				<div className="flex gap-5 items-center">
 					{/* search */}
-					<div className="p-2 px-4 border-[1px] border-gray-300 rounded-full">
+					<div className="p-2 px-4 border-[1px] border-gray-300 rounded-full hidden">
 						<input className="outline-none bg-transparent" type="text" placeholder="Tìm kiếm" />
 						<button>
 							<FontAwesomeIcon icon={faMagnifyingGlass} />
