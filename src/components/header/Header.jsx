@@ -32,8 +32,8 @@ function Header() {
 			<div className="container mx-auto	py-5 flex justify-between items-center">
 				{/* logo */}
 				<div>
-					<a href="#!">
-						<img className="w-[73px] bg-white" src="https://canifa.com/assets/images/logo.svg" alt="logo" />
+					<a href="#!" className="font-bold text-2xl">
+						DummyJSON
 					</a>
 				</div>
 				{/* menu */}

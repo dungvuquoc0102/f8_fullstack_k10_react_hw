@@ -3,24 +3,18 @@ export default function ProductItem({ product }) {
 		<li className="border-[1px] border-gray-200  bg-white dark:bg-[#2d2d2d] dark:text-white dark:border-none">
 			<a href="#!">
 				{/* img */}
-				<img className="aspect-[500/659]  object-cover dark:	opacity-90" src={product.image} alt="img product" />
+				<div className="bg-white dark:bg-black">
+					<img className="aspect-[1/1]  object-cover dark:opacity-90" src={product.thumbnail} alt="img product" />
+				</div>
 				{/* title */}
-				<div className="px-2 pt-4 font-bold line-clamp-2 min-h-[64px] border-t-[1px] border-gray-200">{product.name}</div>
-				{/* short description */}
-				<div className="text-sm m-2 min-h-[140px] text-gray-500">Mô tả: {product.short_description}</div>
-				{/* sku */}
-				<div className="m-2 text-sm text-gray-500">SKU: {product.sku}</div>
-				{/* material */}
-				<div className="m-2 text-sm line-clamp-1 text-gray-500">Chất liệu: {product.materials || "Đang cập nhật"}</div>
-				{/* instruction */}
-				<div className="m-2 text-sm min-h-[120px] text-gray-500">Hướng dẫn: {product.instruction || "Đang cập nhật"}</div>
+				<div className="px-2 pt-4 font-bold line-clamp-2 min-h-[64px] border-t-[1px] dark:border-t-transparent border-gray-200">{product.title}</div>
 				<div className="m-2 flex justify-between text-sm">
 					{/* price */}
 					<div className="font-bold whitespace-nowrap">
 						<span>
-							{product.final_price.toLocaleString("vi-VN", {
+							{product.price.toLocaleString("en-US", {
 								style: "currency",
-								currency: "VND"
+								currency: "USD"
 							})}
 						</span>
 					</div>
