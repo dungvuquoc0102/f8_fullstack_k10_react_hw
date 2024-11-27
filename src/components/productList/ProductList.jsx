@@ -22,8 +22,9 @@ export default function ProductList() {
 				skip
 			})
 			.then((res) => {
-				setProducts(res.products);
-				setTotalProducts(res.total);
+				if (!res.status) return;
+				setProducts(res.data.products);
+				setTotalProducts(res.data.total);
 			});
 	}, [search, limit, skip]);
 
