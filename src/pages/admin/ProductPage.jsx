@@ -5,6 +5,7 @@ import productService from "../../components/productList/productService";
 
 const ProductPage = () => {
 	const { products, setProducts } = useContext(ProductContext);
+	const [page, setPage] = useState(1);
 
 	async function handleDeleteProduct(id) {
 		if (confirm("Are you sure to delete this product?")) {
@@ -12,6 +13,10 @@ const ProductPage = () => {
 			if (!data.status) return;
 		}
 		setProducts((prev) => prev.filter((product) => product.id !== id));
+	}
+
+	function handlePaginationProducts(page) {
+		setPage(page);
 	}
 
 	return (
@@ -30,12 +35,9 @@ const ProductPage = () => {
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 				</label> */}
 				{/* limit */}
-				{/* <select className="dark:text-white outline-none p-1 border-[1px] rounded-md w-fit bg-transparent">
+				<select className="dark:text-white outline-none p-1 border-[1px] rounded-md w-fit bg-transparent" disabled>
 					<option value="10">10 / page</option>
-					<option value="20">20 / page</option>
-					<option value="30">30 / page</option>
-					<option value="40">40 / page</option>
-				</select> */}
+				</select>
 				{/* Number of products */}
 				<div>Total products: {products.length}</div>
 			</div>
@@ -51,7 +53,7 @@ const ProductPage = () => {
 						</tr>
 					</thead>
 					<tbody className="divide-y-[1px]">
-						{products.map((product, index) => (
+						{products.slice((page - 1) * 10, page * 10).map((product, index) => (
 							<tr key={index} className="text-center">
 								<td>{product.id}</td>
 								<td>{product.title}</td>
@@ -68,6 +70,15 @@ const ProductPage = () => {
 						))}
 					</tbody>
 				</table>
+			</div>
+			{/* Pagination */}
+			<div className="mt-3 flex justify-center">
+				<button onClick={() => handlePaginationProducts(page - 1)} disabled={page === 1} className="m-2 p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
+					Prev
+				</button>
+				<button onClick={() => handlePaginationProducts(page + 1)} disabled={Math.ceil(products.length / 10) === page} className="m-2 p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
+					Next
+				</button>
 			</div>
 		</div>
 	);
