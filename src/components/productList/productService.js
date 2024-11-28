@@ -53,7 +53,7 @@ const productService = {
 	async updateProduct(product) {
 		try {
 			const res = await fetch(`${productURL}/${product.id}`, {
-				method: "PUT",
+				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json"
 				},
