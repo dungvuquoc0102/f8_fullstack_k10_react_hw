@@ -24,11 +24,15 @@ const Header = () => {
 						</button>
 					</div> */}
 					{/* dark mode */}
-					<div>
+					<div className="hidden">
 						<button>
 							<FontAwesomeIcon icon={faMoon} />
 						</button>
 					</div>
+					{/* homepage */}
+					<Link to="/" className="p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
+						Homepage
+					</Link>
 				</div>
 			</div>
 		</header>

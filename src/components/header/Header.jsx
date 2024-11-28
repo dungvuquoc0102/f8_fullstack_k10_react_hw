@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Header() {
 	let darkMode = localStorage.getItem("darkMode");
@@ -72,6 +73,10 @@ function Header() {
 					<div>
 						<button onClick={toggleDarkMode}>{isDarkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
 					</div>
+					{/* admin */}
+					<Link to="/admin" className="p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
+						Admin
+					</Link>
 				</div>
 			</div>
 		</header>

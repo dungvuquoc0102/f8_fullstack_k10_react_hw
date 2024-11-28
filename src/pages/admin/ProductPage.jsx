@@ -7,10 +7,11 @@ const ProductPage = () => {
 	const { products, setProducts } = useContext(ProductContext);
 
 	async function handleDeleteProduct(id) {
-		confirm("Are you sure to delete this product?") && (await productService.deleteProduct(id));
-		const data = await productService.getProducts({ search: "", limit: 10, skip: 0 });
-		if (!data.status) return;
-		setProducts(data.data);
+		if (confirm("Are you sure to delete this product?")) {
+			const data = await productService.deleteProduct(id);
+			if (!data.status) return;
+		}
+		setProducts((prev) => prev.filter((product) => product.id !== id));
 	}
 
 	return (
@@ -35,6 +36,8 @@ const ProductPage = () => {
 					<option value="30">30 / page</option>
 					<option value="40">40 / page</option>
 				</select> */}
+				{/* Number of products */}
+				<div>Total products: {products.length}</div>
 			</div>
 			{/* Product table */}
 			<div className="mt-3 border-[1px] rounded-md">

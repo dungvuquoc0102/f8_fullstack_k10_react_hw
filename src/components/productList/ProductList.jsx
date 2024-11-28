@@ -15,28 +15,21 @@ export default function ProductList() {
 	let myTimeout;
 
 	useEffect(() => {
-		productService
-			.getProducts({
-				search,
-				limit,
-				skip
-			})
-			.then((res) => {
-				if (!res.status) return;
-				setProducts(res.data.products);
-				setTotalProducts(res.data.total);
-			});
+		productService.getProducts().then((res) => {
+			if (!res.status) return;
+			setProducts(res.data);
+			setTotalProducts(res.data.length);
+		});
 	}, [search, limit, skip]);
 
 	function handleSearch(e) {
 		clearTimeout(myTimeout);
-		myTimeout =
-			setTimeout(() => {
-				setSearch(e.target.value);
-				setSkip(0);
-				setPage(1);
-			}, 1000)
-	};
+		myTimeout = setTimeout(() => {
+			setSearch(e.target.value);
+			setSkip(0);
+			setPage(1);
+		}, 1000);
+	}
 
 	function handleLimit(e) {
 		const newLimit = parseInt(e.target.value);
@@ -77,17 +70,17 @@ export default function ProductList() {
 		<div className="container mx-auto min-h-screen px-3 xl:px-0">
 			<div className="flex justify-between items-center mt-4">
 				{/* search */}
-				<label className="p-2 px-4 border-[1px] border-gray-300 rounded-full dark:text-white">
+				{/* <label className="p-2 px-4 border-[1px] border-gray-300 rounded-full dark:text-white">
 					<input type="text" className="outline-none bg-transparent" placeholder="Tìm kiếm" onChange={handleSearch} />
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
-				</label>
+				</label> */}
 				{/* limit */}
-				<select className="dark:text-white outline-none p-1 border-[1px] w-fit bg-transparent" onChange={handleLimit}>
+				{/* <select className="dark:text-white outline-none p-1 border-[1px] w-fit bg-transparent" onChange={handleLimit}>
 					<option value="10">10 / page</option>
 					<option value="20">20 / page</option>
 					<option value="30">30 / page</option>
 					<option value="40">40 / page</option>
-				</select>
+				</select> */}
 			</div>
 			{totalProducts ? (
 				<>
@@ -98,7 +91,7 @@ export default function ProductList() {
 							))}
 						</ul>
 					</div>
-					<div className="flex justify-center gap-2 text-xl">
+					<div className="justify-center gap-2 text-xl hidden">
 						{/* prev button */}
 						<button onClick={handlePrevBtn} className={(skip / limit ? "hover:bg-gray-200 " : "text-gray-400 ") + "p-2 px-4 rounded-md"} disabled={page === 1}>
 							<FontAwesomeIcon icon={faAngleLeft} />
@@ -111,24 +104,17 @@ export default function ProductList() {
 							pattern="[0-9]*"
 							onChange={handlePage}
 							onKeyDown={(e) => {
-								if (
-									!/^[0-9]$/.test(e.key) &&
-									e.key !== "Backspace" &&
-									e.key !== "ArrowLeft" &&
-									e.key !== "ArrowRight"
-								) {
+								if (!/^[0-9]$/.test(e.key) && e.key !== "Backspace" && e.key !== "ArrowLeft" && e.key !== "ArrowRight") {
 									e.preventDefault();
 								}
 							}}
-							onBlur={handleAfterOnChange} />
+							onBlur={handleAfterOnChange}
+						/>
 						<span className="p-2 px-4">/</span>
 						{/* total page */}
 						<span className="p-2 px-4 rounded-md">{Math.ceil(totalProducts / limit)}</span>
 						{/* next button */}
-						<button
-							onClick={handleNextBtn}
-							disabled={page === Math.ceil(totalProducts / limit)}
-							className={page === Math.ceil(totalProducts / limit) ? "text-gray-400" : "hover:bg-gray-200" + " p-2 px-4 rounded-md cursor-pointer"}>
+						<button onClick={handleNextBtn} disabled={page === Math.ceil(totalProducts / limit)} className={page === Math.ceil(totalProducts / limit) ? "text-gray-400" : "hover:bg-gray-200" + " p-2 px-4 rounded-md cursor-pointer"}>
 							<FontAwesomeIcon icon={faAngleRight} />
 						</button>
 					</div>
