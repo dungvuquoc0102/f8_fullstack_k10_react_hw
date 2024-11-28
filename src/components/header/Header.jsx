@@ -32,9 +32,9 @@ function Header() {
 			<div className="container mx-auto	py-5 flex justify-between items-center">
 				{/* logo */}
 				<div>
-					<a href="/" className="font-bold text-2xl">
+					<Link to="/" className="font-bold text-2xl">
 						DummyJSON
-					</a>
+					</Link>
 				</div>
 				{/* menu */}
 				<div>
