@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ProductContext from "../../productContext";
 import { Link } from "react-router-dom";
-import productService from "../../components/productList/productService";
+import service from "./../../axios/index";
 
 const ProductPage = () => {
 	const { products, setProducts } = useContext(ProductContext);
@@ -9,10 +9,10 @@ const ProductPage = () => {
 
 	async function handleDeleteProduct(id) {
 		if (confirm("Are you sure to delete this product?")) {
-			const data = await productService.deleteProduct(id);
-			if (!data.status) return;
+			const res = await service.removeById("products", id);
+			if (res.status !== 200) return alert("Error");
+			setProducts((prev) => prev.filter((product) => product.id !== id));
 		}
-		setProducts((prev) => prev.filter((product) => product.id !== id));
 	}
 
 	function handlePaginationProducts(page) {

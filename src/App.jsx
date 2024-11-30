@@ -2,23 +2,22 @@ import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardPage from "./pages/admin/DashboardPage.jsx";
-import ProductAddPage from "./pages/admin/ProductAddPage.jsx";
+import ProductAddOrUpdatePage from "./pages/admin/ProductAddOrUpdatePage.jsx";
 import ProductPage from "./pages/admin/ProductPage.jsx";
-import ProductUpdatePage from "./pages/admin/ProductUpdatePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import { useEffect, useState } from "react";
-import productService from "./components/productList/productService.js";
 import { ProductProvider } from "./productContext.js";
+import service from "./axios/index.js";
 
 function App() {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
 		(async () => {
-			const data = await productService.getProducts({ search: "", limit: 10, skip: 0 });
-			if (!data.status) return;
-			setProducts(data.data);
+			const res = await service.getAll("products");
+			if (res.status !== 200) return alert("Error");
+			setProducts(res.data);
 		})();
 	}, []);
 
@@ -28,8 +27,8 @@ function App() {
 				<Routes>
 					<Route path="/admin" element={<DashboardPage />}>
 						<Route path="/admin" element={<ProductPage />} />
-						<Route path="/admin/product-add" element={<ProductAddPage />} />
-						<Route path="/admin/product-update/:id" element={<ProductUpdatePage />} />
+						<Route path="/admin/product-add" element={<ProductAddOrUpdatePage />} />
+						<Route path="/admin/product-update/:id" element={<ProductAddOrUpdatePage />} />
 					</Route>
 					<Route path="/" element={<HomePage />} />
 					<Route path="*" element={<NotFoundPage />} />

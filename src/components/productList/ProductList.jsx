@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import ProductItem from "./ProductItem";
-import productService from "./productService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import service from "./../../axios/index";
 
 export default function ProductList() {
 	const [search, setSearch] = useState("");
@@ -15,11 +15,12 @@ export default function ProductList() {
 	let myTimeout;
 
 	useEffect(() => {
-		productService.getProducts().then((res) => {
-			if (!res.status) return;
+		(async () => {
+			const res = await service.getAll("products");
+			if (res.status !== 200) return alert("Error");
 			setProducts(res.data);
 			setTotalProducts(res.data.length);
-		});
+		})();
 	}, [search, limit, skip]);
 
 	function handleSearch(e) {
