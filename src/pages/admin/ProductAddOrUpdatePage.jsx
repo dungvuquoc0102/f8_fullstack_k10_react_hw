@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const ProductAddOrUpdatePage = () => {
 	const productSchema = z.object({
 		title: z.string().min(1, "Title is required"),
-		price: z.number().positive("Price must be a positive number"),
+		price: z.coerce.number().positive("Price must be a positive number").min(1, "Price is required"),
 		description: z.string().min(1, "Description is required")
 		// thumbnail: z.string(),
 	});
