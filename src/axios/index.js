@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-	baseURL: "https://json-server-ld3c.onrender.com/",
+	baseURL: "http://localhost:3000",
 	timeout: 1000,
 	headers: {
 		"Content-Type": "application/json"
