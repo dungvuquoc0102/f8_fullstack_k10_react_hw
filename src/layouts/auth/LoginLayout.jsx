@@ -34,7 +34,7 @@ const LoginLayout = () => {
 	return (
 		<div className="w-[500px] max-w-full mx-auto mt-10 border rounded-md p-3">
 			{/* header */}
-			<h1 className="text-2xl text-center">login Account</h1>
+			<h1 className="text-2xl text-center">Login Account</h1>
 			{/* Login form */}
 			<form onSubmit={handleSubmit(handleLogin)}>
 				{/* Email */}
