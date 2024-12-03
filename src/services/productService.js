@@ -1,14 +1,6 @@
-import axios from "axios";
+import instance from ".";
 
-const instance = axios.create({
-	baseURL: "http://localhost:3000",
-	timeout: 1000,
-	headers: {
-		"Content-Type": "application/json"
-	}
-});
-
-const service = {
+const productService = {
 	async getById(path, id) {
 		try {
 			const res = await instance.get(`${path}/${id}`);
@@ -43,7 +35,7 @@ const service = {
 	},
 	async updateById(path, id, data) {
 		try {
-			const res = await instance.put(`${path}/${id}`, data);
+			const res = await instance.patch(`${path}/${id}`, data);
 			return res;
 		} catch (err) {
 			console.log(err);
@@ -51,4 +43,4 @@ const service = {
 	}
 };
 
-export default service;
+export default productService;

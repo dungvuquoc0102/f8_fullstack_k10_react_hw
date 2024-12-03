@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "Essence Mascara Lash Princess",
+      "title": "Essence Mascara Lash Princess Update 4",
       "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
       "category": "beauty",
       "price": 9.99,
@@ -1795,6 +1795,82 @@
         "https://cdn.dummyjson.com/products/images/groceries/Kiwi/1.png"
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
+    },
+    {
+      "title": "title1update",
+      "price": 100,
+      "description": "desc1update",
+      "id": 31
+    },
+    {
+      "title": "title2",
+      "price": 100,
+      "description": "desc2",
+      "id": 32
+    }
+  ],
+  "users": [
+    {
+      "email": "dungvq@gmail.com",
+      "password": "$2a$10$I6k9NujDOGxIevQ/cS6gLea.HqvWjC4vrtDv8Zc0jDhvvjtF.Rd0K",
+      "username": "dungvq",
+      "id": 1
+    },
+    {
+      "email": "dungvq1@gmail.com",
+      "password": "$2a$10$b2Z9USVzl5Iz/9bHaazWauypKfZn98tWfL3RhHJKPWd2K70j4zZxi",
+      "username": "dungvq1",
+      "confirmPassword": "dungvq1",
+      "id": 2
+    },
+    {
+      "email": "dungvq2@gmail.com",
+      "password": "$2a$10$mGow7So/BLSWkB0lT1fDteYhx7YCcz1LhFUPkymNxMcCSI/tb66UO",
+      "username": "dungvq2",
+      "confirmPassword": "dungvq2",
+      "id": 3
+    },
+    {
+      "email": "dungvq3@gmail.com",
+      "password": "$2a$10$OdufZ3ESAtPqEeWZZ2yT8OKDAz6DNk9aae.VGX0GRC.5f3yp46Rom",
+      "username": "dungvq3",
+      "confirmPassword": "dungvq3",
+      "id": 4
+    },
+    {
+      "email": "dungvq4@gmail.com",
+      "password": "$2a$10$WEcc.a4s1RX4qDc8MskdA.bIj.8z4Nm1T/H.DlsHOCOm42sZJN3ru",
+      "username": "dungvq4",
+      "confirmPassword": "dungvq4",
+      "id": 5
+    },
+    {
+      "email": "dungvq5@gmail.com",
+      "password": "$2a$10$Yja1JoHAFBw5CmxIqZvPoOXT9WtiQ1PkY8gZN3uAExA87ftPdAxsG",
+      "username": "dungvq5",
+      "confirmPassword": "dungvq5",
+      "id": 6
+    },
+    {
+      "email": "dungvq6@gmail.com",
+      "password": "$2a$10$zYTapi1bMIIN4pMDRJu.pevTiY2v5eQJKjKQlt0cBmUrhEfQk3AUO",
+      "username": "dungvq6",
+      "confirmPassword": "dungvq6",
+      "id": 7
+    },
+    {
+      "email": "dungvq7@gmail.com",
+      "password": "$2a$10$v0Er9.RCQX6BQDjmujAs6OnhKfgfCTp2grBWuEx0PGppK/TgY67X6",
+      "username": "dungvq7",
+      "confirmPassword": "dungvq7",
+      "id": 8
+    },
+    {
+      "email": "dungvq8@gmail.com",
+      "password": "$2a$10$tLqKZ7S7wHFtfN7HyFYwrOnNknaUUmc5DKxb4OBWBJpedTxMt/oQ.",
+      "username": "dungvq8",
+      "confirmPassword": "dungvq8",
+      "id": 9
     }
   ]
 }

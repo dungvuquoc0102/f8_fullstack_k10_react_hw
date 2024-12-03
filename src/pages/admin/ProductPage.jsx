@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ProductContext from "../../productContext";
 import { Link } from "react-router-dom";
-import service from "./../../axios/index";
+import productService from "../../services/productService";
 
 const ProductPage = () => {
 	const { products, setProducts } = useContext(ProductContext);
@@ -9,7 +9,7 @@ const ProductPage = () => {
 
 	async function handleDeleteProduct(id) {
 		if (confirm("Are you sure to delete this product?")) {
-			const res = await service.removeById("products", id);
+			const res = await productService.removeById("products", id);
 			if (res.status !== 200) return alert("Error");
 			setProducts((prev) => prev.filter((product) => product.id !== id));
 		}
@@ -49,6 +49,7 @@ const ProductPage = () => {
 							<th>Id</th>
 							<th>Name</th>
 							<th>Price</th>
+							<th>Description</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -58,6 +59,9 @@ const ProductPage = () => {
 								<td>{product.id}</td>
 								<td>{product.title}</td>
 								<td>{product.price}</td>
+								<td>
+									<div className="max-w-[400px] line-clamp-2 mx-auto">{product.description}</div>
+								</td>
 								<td>
 									<Link to={"/admin/product-update/" + product.id} className="m-2 p-2 px-4 bg-yellow-400 rounded-md text-white hover:bg-yellow-500">
 										Edit

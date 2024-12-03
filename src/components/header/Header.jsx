@@ -70,9 +70,9 @@ function Header() {
 						</button>
 					</div>
 					{/* dark mode */}
-					<div>
-						<button onClick={toggleDarkMode}>{isDarkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
-					</div>
+					{/* <div>
+							<button onClick={toggleDarkMode}>{isDarkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
+						</div> */}
 					{/* admin */}
 					<Link to="/admin" className="p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
 						Admin

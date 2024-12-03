@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import service from "./../../axios/index";
+import productService from "./../../services/productService";
 
 export default function ProductList() {
 	const [search, setSearch] = useState("");
@@ -16,7 +16,7 @@ export default function ProductList() {
 
 	useEffect(() => {
 		(async () => {
-			const res = await service.getAll("products");
+			const res = await productService.getAll("products");
 			if (res.status !== 200) return alert("Error");
 			setProducts(res.data);
 			setTotalProducts(res.data.length);
