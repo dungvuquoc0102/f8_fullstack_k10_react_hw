@@ -1871,6 +1871,13 @@
       "username": "dungvq8",
       "confirmPassword": "dungvq8",
       "id": 9
+    },
+    {
+      "email": "dung123@gmail.com",
+      "password": "$2a$10$JazWjyKcPxv1Q2IZybCM3OvjBZGnOtRWhRymtkuP2kI6IVWafzGsy",
+      "username": "dung123",
+      "confirmPassword": "dung123",
+      "id": 10
     }
   ]
 }

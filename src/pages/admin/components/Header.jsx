@@ -49,9 +49,12 @@ const Header = () => {
 						</>
 					)}
 					{user.email && (
-						<Link to="/logout" className="p-2 px-4 bg-green-500 rounded-md text-white hover:bg-green-600">
-							Logout
-						</Link>
+						<>
+							<span className="font-bold">Hello, {user.username}</span>
+							<Link to="/logout" className="p-2 px-4 bg-green-500 rounded-md text-white hover:bg-green-600">
+								Logout
+							</Link>
+						</>
 					)}
 					{/* homepage */}
 					<Link to="/" className="p-2 px-4 bg-blue-400 rounded-md text-white hover:bg-blue-500">
